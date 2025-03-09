@@ -8,12 +8,26 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fff;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
+            flex-direction: column;
+        }
+        .logo {
+            max-width: 200px; /* تحديد حجم اللوجو */
+            margin-top: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px; /* الحد الأقصى للعرض */
+            margin: 20px auto;
         }
         .btn {
             display: block;
-            margin: 20px;
+            margin: 20px auto;
             padding: 15px;
             font-size: 18px;
             width: 80%;
@@ -21,17 +35,22 @@
             border: 1px solid #ccc;
             background-color: #4CAF50;
             color: white;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         .btn:hover {
             background-color: #45a049;
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <button class="btn" onclick="location.href='search.html'">اعرف قسطك</button>
-    <button class="btn" onclick="window.location.href='https://masaken.gov.eg/'">آخر الأخبار</button>
-    <button class="btn" onclick="window.location.href='https://masaken.gov.eg/AboutMinistry/AboutMinistry'">عن الصندوق</button>
+    <img src="1.png" alt="لوجو الصندوق" class="logo">
+    <div class="container">
+        <button class="btn" onclick="location.href='search.html'">اعرف قسطك</button>
+        <button class="btn" onclick="window.location.href='https://masaken.gov.eg/'">آخر الأخبار</button>
+        <button class="btn" onclick="window.location.href='https://masaken.gov.eg/AboutMinistry/AboutMinistry'">عن الصندوق</button>
+    </div>
 </body>
 </html>
