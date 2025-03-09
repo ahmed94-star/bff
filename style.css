@@ -1,0 +1,28 @@
+
+/* تنسيق شاشة البداية */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+.splash-screen {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 24px;
+    color: #000000;
+    margin-top: 10px;
+}
