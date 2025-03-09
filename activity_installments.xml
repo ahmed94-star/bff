@@ -1,0 +1,36 @@
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/civilIdInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="الرقم القومي"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="بحث"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الاسم:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/installmentDetailsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="تفاصيل القسط"
+        android:textSize="18sp" />
+</LinearLayout>
