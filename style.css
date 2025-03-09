@@ -3,16 +3,14 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
     background-color: white;
 }
 
+/* تنسيق شاشة البداية */
 .splash-screen {
     text-align: center;
-    font-family: Arial, sans-serif;
+    padding-top: 50px;
 }
 
 #logo {
@@ -24,5 +22,37 @@ body {
 p {
     font-size: 24px;
     color: #000000;
-    margin-top: 10px;
+}
+
+/* تنسيق الأزرار */
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* تنسيق الزر */
+.button {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 250px;
+    justify-content: space-between;
+}
+
+.button:hover {
+    background-color: #333;
+}
+
+/* تنسيق الأيقونات */
+.button-icon {
+    width: 30px;
+    height: 30px;
 }
