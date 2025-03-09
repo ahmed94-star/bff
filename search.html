@@ -17,13 +17,18 @@
             flex-direction: column;
         }
         .logo {
-            max-width: 200px; /* تحديد حجم اللوجو */
+            max-width: 150px; /* تصغير حجم اللوجو */
             margin-top: 20px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #333;
         }
         .search-container {
             text-align: center;
             width: 100%;
-            max-width: 500px; /* الحد الأقصى للعرض */
+            max-width: 500px;
         }
         input[type="text"] {
             padding: 12px;
@@ -58,9 +63,9 @@
             padding: 20px;
             background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* تأثير الظل */
-            border: 1px solid #ccc; /* الحدود الخاصة بالمربع */
-            max-width: 500px; /* الحد الأقصى لعرض المربع */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            max-width: 500px;
             margin: 20px auto;
             text-align: left;
             color: #333;
@@ -87,10 +92,16 @@
             background-color: #004d40;
             transform: scale(1.05);
         }
+        .footer {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <img src="1.png" alt="لوجو الصندوق" class="logo">
+    <h1>صندوق تمويل المساكن</h1>
     <div class="search-container">
         <label for="national-id">أدخل الرقم القومي:</label>
         <input type="text" id="national-id" placeholder="الرقم القومي">
@@ -120,5 +131,7 @@
             }
         }
     </script>
+
+    <div class="footer">صندوق تمويل المساكن</div>
 </body>
 </html>

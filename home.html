@@ -17,13 +17,19 @@
             flex-direction: column;
         }
         .logo {
-            max-width: 200px; /* تحديد حجم اللوجو */
+            max-width: 150px; /* تصغير حجم اللوجو */
             margin-top: 20px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #333;
         }
         .container {
             width: 100%;
-            max-width: 600px; /* الحد الأقصى للعرض */
+            max-width: 600px;
             margin: 20px auto;
+            text-align: center;
         }
         .btn {
             display: block;
@@ -43,14 +49,21 @@
             background-color: #45a049;
             transform: scale(1.05);
         }
+        .footer {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <img src="1.png" alt="لوجو الصندوق" class="logo">
+    <h1>صندوق تمويل المساكن</h1>
     <div class="container">
         <button class="btn" onclick="location.href='search.html'">اعرف قسطك</button>
         <button class="btn" onclick="window.location.href='https://masaken.gov.eg/'">آخر الأخبار</button>
         <button class="btn" onclick="window.location.href='https://masaken.gov.eg/AboutMinistry/AboutMinistry'">عن الصندوق</button>
     </div>
+    <div class="footer">صندوق تمويل المساكن</div>
 </body>
 </html>
