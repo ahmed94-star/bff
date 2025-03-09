@@ -18,7 +18,7 @@
         }
         .logo {
             max-width: 150px;
-            margin-top: 10px; /* رفع اللوجو قليلاً */
+            margin-top: 10px;
         }
         h1 {
             font-size: 1.5em;
@@ -31,7 +31,7 @@
             max-width: 500px;
         }
         label {
-            font-weight: bold; /* جعل الخط بولد */
+            font-weight: bold;
             margin-right: 10px;
         }
         input[type="text"] {
@@ -43,7 +43,7 @@
             border-radius: 5px;
             border: 2px solid #ccc;
             transition: border-color 0.3s ease;
-            text-align: right; /* محاذاة النص لليمين */
+            text-align: right;
         }
         input[type="text"]:focus {
             border-color: #4CAF50;
@@ -97,11 +97,6 @@
             background-color: #004d40;
             transform: scale(1.05);
         }
-        .footer {
-            font-size: 1.2em;
-            color: #333;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -120,8 +115,6 @@
             var nationalId = document.getElementById('national-id').value;
             var resultDiv = document.getElementById('result');
 
-            // هنا سيتم البحث في البيانات (سأحتاج لدمج البيانات من الشيت)
-            // حالياً سأعرض مثالاً فقط
             if (nationalId == "28811220103831") {
                 resultDiv.innerHTML = `
                     <h3>اسم العميل: اسلام علي محمد</h3>
@@ -136,7 +129,5 @@
             }
         }
     </script>
-
-    <div class="footer">صندوق تمويل المساكن</div>
 </body>
 </html>
