@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "701427349293",
+    "project_id": "building-finance-fund",
+    "storage_bucket": "building-finance-fund.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701427349293:android:2afde88dc1139208e8c5a4",
+        "android_client_info": {
+          "package_name": "com.google.android.packageinstaller"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1ofKRbZHxMl8gOrZMgAgz_DCW87CVfUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
