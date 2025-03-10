@@ -5579,6 +5579,29 @@
                 resultDiv.innerHTML = "<p>الرقم القومي غير موجود.</p>";
             }
         }
+         <script>
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID", 
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+        messaging.requestPermission()
+            .then(function() {
+                console.log("تم منح إذن الإشعارات.");
+                return messaging.getToken();
+            })
+            .then(function(token) {
+                console.log("رمز الإشعار: " + token);
+            })
+            .catch(function(err) {
+                console.log("فشل في الحصول على إذن الإشعارات.", err);
+            });
     </script>
 </body>
 </html>
