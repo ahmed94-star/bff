@@ -1,11 +1,26 @@
 {
-  "name": "functions",
-  "description": "Firebase Cloud Functions",
-  "dependencies": {
-    "firebase-admin": "^9.4.0",
-    "firebase-functions": "^3.14.1"
+  "functions": {
+    "predeploy": [],
+    "source": "functions"
   },
-  "engines": {
-    "node": "14"
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    }
   }
 }
