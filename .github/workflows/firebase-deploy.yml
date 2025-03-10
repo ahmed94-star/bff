@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # تحديث الإصدار إلى 18
+        node-version: '18'  # تحديد الإصدار إلى 18
 
     - name: Install dependencies
       run: |
@@ -27,4 +27,4 @@ jobs:
       run: npm install -g firebase-tools  # تثبيت Firebase CLI
 
     - name: Deploy to Firebase
-      run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}  # استخدام Firebase CLI للنشر
+      run: firebase deploy --only functions --project building-finance-fund --token ${{ secrets.FIREBASE_TOKEN }}  # إضافة --project
