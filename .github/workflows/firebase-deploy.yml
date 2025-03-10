@@ -3,7 +3,7 @@ name: Firebase Functions Deploy
 on:
   push:
     branches:
-      - main  # اختر الفرع الذي يعمل عليه فريقك (مثال: main أو master)
+      - main  # Select the branch you are working on (e.g., main or master)
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # تحديد الإصدار الذي تعمل به
+        node-version: '14'  # Set the Node.js version to 14
 
     - name: Install dependencies
       run: |
