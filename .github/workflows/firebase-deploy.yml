@@ -3,7 +3,7 @@ name: Firebase Functions Deploy
 on:
   push:
     branches:
-      - main  # اختر الفرع الذي تعمل عليه
+      - main
 
 jobs:
   deploy:
@@ -21,15 +21,15 @@ jobs:
     - name: Install dependencies
       run: |
         cd functions
-        npm install  # تأكد من أنه لا يوجد أمر "lint" هنا
+        npm install
 
     - name: Install Firebase CLI
-      run: npm install -g firebase-tools  # تثبيت Firebase CLI
+      run: npm install -g firebase-tools
 
     - name: Set GOOGLE_APPLICATION_CREDENTIALS
-      run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $HOME/.firebase-service-account.json  # وضع بيانات حساب الخدمة في متغير البيئة
+      run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $HOME/.firebase-service-account.json
 
     - name: Deploy to Firebase
-      run: firebase deploy --only functions --project building-finance-fund --token ${{ secrets.FIREBASE_TOKEN }}  # نشر الوظائف
+      run: firebase deploy --only functions --project building-finance-fund --token ${{ secrets.FIREBASE_TOKEN }}
       env:
-        GOOGLE_APPLICATION_CREDENTIALS: $HOME/.firebase-service-account.json  # تعيين متغير البيئة لاستخدام حساب الخدمة
+        GOOGLE_APPLICATION_CREDENTIALS: $HOME/.firebase-service-account.json
