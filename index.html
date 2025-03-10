@@ -46,28 +46,14 @@
             window.location.href = "home.html";  // Redirect to home page after 3 seconds
         }, 3000);
         
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY", 
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID", 
-            appId: "YOUR_APP_ID"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const messaging = firebase.messaging();
-        messaging.requestPermission()
-            .then(function() {
-                console.log("تم منح إذن الإشعارات.");
-                return messaging.getToken();
-            })
-            .then(function(token) {
-                console.log("رمز الإشعار: " + token);
-            })
-            .catch(function(err) {
-                console.log("فشل في الحصول على إذن الإشعارات.", err);
-            });
-    </script>
+       <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "1fd67dab-4e22-4b53-974d-8a5955ab736f",
+    });
+  });
+</script>
 </body>
 </html>
