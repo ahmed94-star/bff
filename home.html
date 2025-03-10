@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرئيسية</title>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-messaging.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+        .logo {
+            max-width: 150px;
+            margin-top: 10px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 15px;
+            font-size: 18px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <img src="1.png" alt="لوجو الصندوق" class="logo">
+    <h1>صندوق تمويل المساكن</h1>
+    <div class="container">
+        <button class="btn" onclick="location.href='search_page_final_for_github.html'">اعرف قسطك</button>
+        <button class="btn" onclick="window.location.href='https://masaken.gov.eg/'">آخر الأخبار</button>
+        <button class="btn" onclick="window.location.href='https://masaken.gov.eg/AboutMinistry/AboutMinistry'">عن الصندوق</button>
+    </div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY", 
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID", 
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+        messaging.requestPermission()
+            .then(function() {
+                console.log("تم منح إذن الإشعارات.");
+                return messaging.getToken();
+            })
+            .then(function(token) {
+                console.log("رمز الإشعار: " + token);
+            })
+            .catch(function(err) {
+                console.log("فشل في الحصول على إذن الإشعارات.", err);
+            });
+    </script>
+</body>
+</html>
+    

@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صندوق تمويل المساكن</title>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-messaging.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #00796b;
+            text-align: center;
+        }
+        .splash-screen {
+            text-align: center;
+            color: white;
+        }
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-screen">
+        <img src="1.png" alt="لوجو الصندوق" class="logo">
+        <h1>صندوق تمويل المساكن</h1>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "home.html";  // Redirect to home page after 3 seconds
+        }, 3000);
+        
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY", 
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID", 
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+        messaging.requestPermission()
+            .then(function() {
+                console.log("تم منح إذن الإشعارات.");
+                return messaging.getToken();
+            })
+            .then(function(token) {
+                console.log("رمز الإشعار: " + token);
+            })
+            .catch(function(err) {
+                console.log("فشل في الحصول على إذن الإشعارات.", err);
+            });
+    </script>
+</body>
+</html>
