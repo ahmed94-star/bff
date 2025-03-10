@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابحث عن قسطك</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            flex-direction: column;
+        }
+        .logo {
+            max-width: 150px;
+            margin-top: 10px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #333;
+        }
+        .search-container {
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            padding: 12px;
+            font-size: 18px;
+            width: 60%;
+            max-width: 400px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            transition: border-color 0.3s ease;
+            text-align: right;
+        }
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: left;
+            color: #333;
+        }
+        .result h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .result p {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+        .result button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #00796b;
+            border-radius: 8px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .result button:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <img src="1.png" alt="لوجو الصندوق" class="logo">
+    <h1>صندوق تمويل المساكن</h1>
+    <div class="search-container">
+        <label for="national-id">أدخل الرقم القومي:</label>
+        <input type="text" id="national-id" placeholder="الرقم القومي">
+        <button onclick="searchData()">بحث</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        // Load the customer data from the JSON file (here is the example with multiple customers)
+        const customerData = [
+            {
+                "الرقم القومي": "28811220103831",
+                "الاسم": "اسلام علي محمد",
+                "رقم العمارة": 1,
+                "رقم الشقة": 1,
+                "إجمالي ثمن الوحدة": 1594440,
+                "القسط الأول": 218888,
+                "موعد بداية القسط الأول": "2025-02-16",
+                "اخر موعد القسط الأول": "2025-03-15",
+                "القسط الثانى": 218888,
+                "موعد بداية القسط الثانى": "2025-04-16",
+                "اخر موعد القسط الثانى": "2025-05-15",
+                "القسط الثالث": 218888,
+                "موعد بداية القسط الثالث": "2025-06-16",
+                "اخر موعد القسط الثالث": "2025-07-15",
+                "المتبقي من ثمن الوحدة": 797776
+            },
+            {
+                "الرقم القومي": "29911230123456",
+                "الاسم": "أحمد مصطفى علي",
+                "رقم العمارة": 2,
+                "رقم الشقة": 5,
+                "إجمالي ثمن الوحدة": 1200000,
+                "القسط الأول": 200000,
+                "موعد بداية القسط الأول": "2025-01-10",
+                "اخر موعد القسط الأول": "2025-02-10",
+                "القسط الثانى": 200000,
+                "موعد بداية القسط الثانى": "2025-03-10",
+                "اخر موعد القسط الثانى": "2025-04-10",
+                "القسط الثالث": 200000,
+                "موعد بداية القسط الثالث": "2025-05-10",
+                "اخر موعد القسط الثالث": "2025-06-10",
+                "المتبقي من ثمن الوحدة": 400000
+            },
+            // More customers can be added here
+        ];
+
+        function searchData() {
+            const nationalId = document.getElementById('national-id').value.trim();  // Remove any extra spaces
+            const resultDiv = document.getElementById('result');
+            const customer = customerData.find(customer => customer['الرقم القومي'].toString().trim() === nationalId);
+
+            if (customer) {
+                resultDiv.innerHTML = `
+                    <h3>اسم العميل: ${customer['الاسم']}</h3>
+                    <p>رقم العمارة: ${customer['رقم العمارة']}</p>
+                    <p>رقم الشقة: ${customer['رقم الشقة']}</p>
+                    <p>إجمالي ثمن الوحدة: ${customer['إجمالي ثمن الوحدة']} جنيه</p>
+                    <p>القسط الأول: ${customer['القسط الأول']} جنيه</p>
+                    <p>التاريخ: من ${customer['موعد بداية القسط الأول']} إلى ${customer['اخر موعد القسط الأول']}</p>
+                    <p>القسط الثاني: ${customer['القسط الثانى']} جنيه</p>
+                    <p>التاريخ: من ${customer['موعد بداية القسط الثانى']} إلى ${customer['اخر موعد القسط الثانى']}</p>
+                    <p>القسط الثالث: ${customer['القسط الثالث']} جنيه</p>
+                    <p>التاريخ: من ${customer['موعد بداية القسط الثالث']} إلى ${customer['اخر موعد القسط الثالث']}</p>
+                    <p>المتبقي من ثمن الوحدة: ${customer['المتبقي من ثمن الوحدة']} جنيه</p>
+                    <button onclick="window.print()">طباعة</button>
+                `;
+            } else {
+                resultDiv.innerHTML = "<p>الرقم القومي غير موجود.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
