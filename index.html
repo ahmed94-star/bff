@@ -13,12 +13,17 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #00796b;
+            background-image: url('منشور إنستقرام أبيض وأخضر بسيط رمضان كريم.jpg');
+            background-size: cover;
+            background-position: center;
             text-align: center;
         }
         .splash-screen {
-            text-align: center;
             color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: To make text more readable */
+            padding: 20px;
+            border-radius: 10px;
         }
         .logo {
             max-width: 150px;
@@ -29,7 +34,10 @@
             font-size: 2em;
             font-weight: bold;
             margin-top: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .greeting {
+            font-size: 1.5em;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -37,6 +45,10 @@
     <div class="splash-screen">
         <img src="1.png" alt="لوجو الصندوق" class="logo">
         <h1>صندوق تمويل المساكن</h1>
+        <div class="greeting">
+            <p>كل عام وأنتم بخير</p>
+            <p>رمضان كريم</p>
+        </div>
     </div>
 
     <script>
