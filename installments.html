@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#667eea">
+    <title>تفاصيل الأقساط - صندوق تمويل المساكن</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="installments-page">
+    <!-- Header -->
+    <header class="page-header">
+        <a href="home.html" class="back-btn">← رجوع</a>
+        <h1>📊 جدول الأقساط</h1>
+        <div></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Client Info -->
+        <div class="card client-info-card">
+            <div class="client-info-item">
+                <span class="label">الاسم:</span>
+                <span class="value" id="clientName">-</span>
+            </div>
+            <div class="client-info-item">
+                <span class="label">الوحدة:</span>
+                <span class="value" id="clientUnit">-</span>
+            </div>
+        </div>
+
+        <!-- Installments Table -->
+        <div class="card installments-table-card">
+            <div id="installmentsTable">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+        </div>
+
+        <!-- Payment Summary -->
+        <div class="card payment-summary-card">
+            <h3>💳 ملخص المدفوعات</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span class="summary-label">إجمالي السعر</span>
+                    <span class="summary-value" id="summaryTotal">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">إجمالي الأقساط</span>
+                    <span class="summary-value" id="summaryInstallments">-</span>
+                </div>
+                <div class="summary-item highlight">
+                    <span class="summary-label">المبلغ المتبقي</span>
+                    <span class="summary-value" id="summaryRemaining">-</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
