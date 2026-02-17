@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع المشروع - صندوق تمويل المساكن</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 22px;
+        }
+
+        .back-btn {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .info-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 18px;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: #666;
+            font-size: 14px;
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .directions-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .directions-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(17, 153, 142, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 18px;
+            }
+
+            #map {
+                height: 400px;
+            }
+
+            .info-card h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📍 موقع المشروع</h1>
+        <a href="home.html" class="back-btn">← العودة</a>
+    </div>
+
+    <div class="container">
+        <div class="info-card">
+            <h2>🏢 معلومات المشروع</h2>
+            <div class="info-item">
+                <div class="info-icon">📌</div>
+                <div class="info-text">
+                    <span class="info-label">الموقع</span>
+                    <span class="info-value">امتداد الحي الثاني - مدينة العبور - محافظة القليوبية</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🏘️</div>
+                <div class="info-text">
+                    <span class="info-label">المشروع</span>
+                    <span class="info-value">320 وحدة سكنية كاملة التشطيب</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">📐</div>
+                <div class="info-text">
+                    <span class="info-label">المساحات</span>
+                    <span class="info-value">تصل إلى 132 متر مربع</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">✅</div>
+                <div class="info-text">
+                    <span class="info-label">الحالة</span>
+                    <span class="info-value">جاهز للاستلام الفوري</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <h2 style="color: #667eea; margin-bottom: 15px;">🗺️ الموقع على الخريطة</h2>
+            <div id="map"></div>
+            <button class="directions-btn" onclick="openDirections()">
+                <span>🧭</span>
+                <span>احصل على الاتجاهات في خرائط جوجل</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // إحداثيات مدينة العبور - امتداد الحي الثاني
+        const projectLat = 30.2283408;
+        const projectLng = 31.4798948;
+
+        // إنشاء الخريطة
+        const map = L.map('map').setView([projectLat, projectLng], 15);
+
+        // إضافة طبقة الخريطة من OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // إنشاء أيقونة مخصصة
+        const customIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `<div style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                width: 50px;
+                height: 50px;
+                border-radius: 50% 50% 50% 0;
+                transform: rotate(-45deg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                border: 3px solid white;
+            ">
+                <span style="transform: rotate(45deg); font-size: 24px;">🏢</span>
+            </div>`,
+            iconSize: [50, 50],
+            iconAnchor: [25, 50],
+            popupAnchor: [0, -50]
+        });
+
+        // إضافة علامة على الموقع
+        const marker = L.marker([projectLat, projectLng], { icon: customIcon }).addTo(map);
+
+        // إضافة نافذة منبثقة
+        marker.bindPopup(`
+            <div style="text-align: center; font-family: Arial;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">🏢 صندوق تمويل المساكن</h3>
+                <p style="margin: 5px 0;"><strong>امتداد الحي الثاني</strong></p>
+                <p style="margin: 5px 0;">مدينة العبور - محافظة القليوبية</p>
+                <button onclick="openDirections()" style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 8px 15px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                ">احصل على الاتجاهات 🧭</button>
+            </div>
+        `).openPopup();
+
+        // إضافة دائرة توضيحية حول المشروع
+        L.circle([projectLat, projectLng], {
+            color: '#667eea',
+            fillColor: '#764ba2',
+            fillOpacity: 0.2,
+            radius: 300
+        }).addTo(map);
+
+        // فتح خرائط جوجل للاتجاهات
+        function openDirections() {
+            const url = `https://www.google.com/maps/dir/?api=1&destination=${projectLat},${projectLng}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
