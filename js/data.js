@@ -5443,7 +5443,7 @@ const customersData = [
         "اخر موعد القسط الثالث": "2025-10-17",
         "المتبقي من ثمن الوحدة": 1158750
     }
-];
+]
 // دالة للبحث عن عميل بالرقم القومي
 function findCustomer(nationalId) {
     return customersData.find(customer => customer["الرقم القومي"] === nationalId);
