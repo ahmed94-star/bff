@@ -1,110 +1,108 @@
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الرئيسية</title>
-    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-messaging.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            flex-direction: column;
-        }
-        .logo {
-            max-width: 150px;
-            margin-top: 10px;
-        }
-        h1 {
-            font-size: 1.5em;
-            margin-top: 10px;
-            color: #333;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: center;
-        }
-        .btn {
-            display: block;
-            margin: 20px auto;
-            padding: 15px;
-            font-size: 18px;
-            width: 80%;
-            max-width: 400px;
-            border: 1px solid #ccc;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#667eea">
+    <title>الصفحة الرئيسية - صندوق تمويل المساكن</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <img src="1.png" alt="لوجو الصندوق" class="logo">
-    <h1>صندوق تمويل المساكن</h1>
-    <div class="container">
-        <button class="btn" onclick="location.href='search_page_final_for_github.html'">اعرف قسطك</button>
-         <!-- زر الخريطة - أضفه بعد زر "اعرف قسطك" -->
-        <a href="map.html" style="
-         display: block;
-         background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 15px;
-        font-size: 20px;
-        font-weight: bold;
-        margin: 15px 0;
-        box-shadow: 0 5px 15px rgba(17, 153, 142, 0.3);
-        transition: all 0.3s;
-">
-    🗺️ موقع المشروع على الخريطة
-</a>
+<body class="home-page">
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-content">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <span class="user-greeting">مرحباً،</span>
+                    <h2 class="user-name" id="userName">...</h2>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <span>تسجيل الخروج</span>
+                <span>🚪</span>
+            </button>
+        </div>
+    </header>
 
-        <button class="btn" onclick="window.location.href='https://masaken.gov.eg/'">آخر الأخبار</button>
-        <button class="btn" onclick="window.location.href='https://masaken.gov.eg/AboutMinistry/AboutMinistry'">عن الصندوق</button>
-    </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Unit Info Card -->
+        <div class="card unit-card">
+            <div class="card-header">
+                <h3>🏠 بيانات الوحدة</h3>
+            </div>
+            <div class="card-body">
+                <div class="unit-grid">
+                    <div class="unit-item">
+                        <span class="unit-label">رقم العمارة</span>
+                        <span class="unit-value" id="buildingNo">-</span>
+                    </div>
+                    <div class="unit-item">
+                        <span class="unit-label">رقم الشقة</span>
+                        <span class="unit-value" id="unitNo">-</span>
+                    </div>
+                    <div class="unit-item">
+                        <span class="unit-label">إجمالي السعر</span>
+                        <span class="unit-value price" id="totalPrice">-</span>
+                    </div>
+                    <div class="unit-item">
+                        <span class="unit-label">المتبقي</span>
+                        <span class="unit-value price highlight" id="remaining">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY", 
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID", 
-            appId: "YOUR_APP_ID"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const messaging = firebase.messaging();
-        messaging.requestPermission()
-            .then(function() {
-                console.log("تم منح إذن الإشعارات.");
-                return messaging.getToken();
-            })
-            .then(function(token) {
-                console.log("رمز الإشعار: " + token);
-            })
-            .catch(function(err) {
-                console.log("فشل في الحصول على إذن الإشعارات.", err);
-            });
-    </script>
+        <!-- Installments Summary -->
+        <div class="card installments-card">
+            <div class="card-header">
+                <h3>💰 ملخص الأقساط</h3>
+            </div>
+            <div class="card-body">
+                <div id="installmentsSummary" class="installments-summary">
+                    <!-- سيتم ملؤها بالجافاسكريبت -->
+                </div>
+                <a href="installments.html" class="view-all-btn">
+                    عرض جميع الأقساط بالتفصيل ←
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="actions-grid">
+            <a href="map.html" class="action-card map-card">
+                <div class="action-icon">🗺️</div>
+                <h4>موقع المشروع</h4>
+                <p>خريطة تفاعلية</p>
+            </a>
+
+            <a href="news.html" class="action-card news-card">
+                <div class="action-icon">📰</div>
+                <h4>آخر الأخبار</h4>
+                <p>تحديثات المشروع</p>
+            </a>
+
+            <a href="tel:16155" class="action-card contact-card">
+                <div class="action-icon">📞</div>
+                <h4>اتصل بنا</h4>
+                <p>16155</p>
+            </a>
+
+            <a href="installments.html" class="action-card installments-link-card">
+                <div class="action-icon">📊</div>
+                <h4>تفاصيل الأقساط</h4>
+                <p>الجدول الكامل</p>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>صندوق تمويل المساكن - مدينة العبور © 2026</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
-    
