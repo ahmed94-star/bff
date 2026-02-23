@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>دليل خدمات العبور والأقساط</title>
+    <title>صندوق تمويل المساكن</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -75,14 +75,14 @@
 
     <div id="splash-screen">
         <img src="logo.png" class="motion-logo">
-        <p class="mt-3 text-muted">صندوق تمويل المساكن - العبور</p>
+        <p class="mt-3 text-muted">صندوق تمويل المساكن - مشروع مدينة العبور</p>
     </div>
 
     <div id="app">
         <div id="page-home" class="app-page active text-center">
             <div class="header-box">
-                <h4>أهلاً بك في العبور</h4>
-                <p class="mb-0">استعلم عن أقساطك وخدمات مدينتك</p>
+                <h4>أهلاً بك </h4>
+                <p class="mb-0">استعلم عن أقساطك </p>
             </div>
             <div class="card p-4 mx-3 shadow-sm border-0">
                 <input type="number" id="id-input" class="form-control form-control-lg mb-3" placeholder="أدخل الرقم القومي">
@@ -105,47 +105,95 @@
         <div id="page-news" class="app-page">
             <h5 class="fw-bold mb-3">📰 آخر الأخبار والتنبيهات</h5>
             
-            <div class="news-card">
-                <div class="news-date">23 فبراير 2026</div>
-                <div class="news-title">📢 بدء تسليم عمارات المرحلة الأولى</div>
-                <p class="news-text">يسرنا إبلاغكم ببدء إجراءات تسليم الوحدات. يرجى مراجعة الجهاز لتحديد موعد المعاينة.</p>
-                <a href="tel:16155" class="btn btn-sm btn-outline-primary mt-2">اتصال بالدعم</a>
-            </div>
-
-            <div class="news-card">
-                <div class="news-date">15 فبراير 2026</div>
-                <div class="news-title">✅ اكتمال أعمال اللاندسكيب</div>
-                <p class="news-text">تم الانتهاء من زراعة المساحات الخضراء حول العمارات 1 إلى 10 لضمان بيئة صحية.</p>
-            </div>
-
             <div class="news-card" style="border-right-color: #1877F2;">
                 <div class="news-title">🔵 تابعونا على فيسبوك</div>
-                <p class="news-text">للحصول على التحديثات اليومية والصور الحية للمشروع.</p>
-                <a href="https://facebook.com" target="_blank" class="btn btn-sm btn-primary w-100 mt-2">فتح الصفحة الرسمية</a>
+                <p class="news-text">للحصول على التحديثات اليومية واخر الاخبار</p>
+                <a href="https://www.facebook.com/profile.php?id=61575993517643" class="btn btn-sm btn-primary w-100 mt-2">فتح الصفحة الرسمية</a>
             </div>
         </div>
 
         <div id="page-services" class="app-page">
-            <h5 class="fw-bold mb-3">📍 دليل الخدمات</h5>
+            <h5 class="fw-bold mb-1">📍 دليل مدينة العبور الشامل</h5>
+            <p class="small text-muted mb-3">أهم المواقع المحيطة بالمشروع</p>
+
+            <div class="section-title">البنوك والتحصيل</div>
+            
             <div class="service-card">
-                <span>🏦</span> <div class="ms-3"><h6>البنك الأهلي</h6><p class="small m-0">فرع العبور</p></div>
-                <button onclick="window.open('https://maps.google.com')" class="btn-go">موقع</button>
+                <div class="service-icon">🏦</div>
+                <div class="service-info">
+                    <h6>البنك الأهلي المصري</h6>
+                    <p>فرع العبور </p>
+                </div>
+                <button onclick="window.open('https://maps.app.goo.gl/zgNb5m6duocMTYnE7')" class="btn-go">موقع</button>
             </div>
+
             <div class="service-card">
-                <span>🛍️</span> <div class="ms-3"><h6>جولف سيتي مول</h6><p class="small m-0">كارفور العبور</p></div>
-                <button onclick="window.open('https://maps.google.com')" class="btn-go">موقع</button>
+                <div class="service-icon">🏛️</div>
+                <div class="service-info">
+                    <h6>بنك مصر - فرع العبور</h6>
+                    <p>بجوار جهاز مدينة العبور</p>
+                </div>
+                <button onclick="window.open('https://maps.app.goo.gl/d8a749iELYn4nnzm8')" class="btn-go">موقع</button>
             </div>
+
             <div class="service-card">
-                <span>🏛️</span> <div class="ms-3"><h6>جهاز المدينة</h6><p class="small m-0">الحي الأول</p></div>
-                <button onclick="window.open('https://maps.google.com')" class="btn-go">موقع</button>
+                <div class="service-icon">💳</div>
+                <div class="service-info">
+                    <h6>بنك القاهرة</h6>
+                    <p>فرع العبور - الحي الأول</p>
+                </div>
+                <button onclick="window.open('https://maps.app.goo.gl/NuJ3DMgeWc4KZHxEA')" class="btn-go">موقع</button>
+            </div>
+
+            <div class="section-title">التسوق والترفيه</div>
+
+            <div class="service-card">
+                <div class="service-icon">🛍️</div>
+                <div class="service-info">
+                    <h6>جولف سيتي مول</h6>
+                    <p>مدخل المدينة - كارفور العبور</p>
+                </div>
+                <button onclick="window.open('https://maps.app.goo.gl/8D1vevR1cUGAgiqB9')" class="btn-go">موقع</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <div class="service-info">
+                    <h6>مول العبور (كابيتال بلازا)</h6>
+                    <p>بجوار جهاز المدينة</p>
+                </div>
+                <button onclick="window.open('https://maps.app.goo.gl/gNtAA4xYVJ7KhNHs6')" class="btn-go">موقع</button>
+            </div>
+
+            <div class="section-title">خدمات عامة</div>
+
+            <div class="service-card">
+                <div class="service-icon">🏛️</div>
+                <div class="service-info">
+                    <h6>جهاز مدينة العبور</h6>
+                    <p>الحي الأول - المقر الرئيسي</p>
+                </div>
+                <button onclick="window.open('https://maps.app.goo.gl/xsKraLFZrFZTthep8')" class="btn-go">موقع</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <div class="service-info">
+                    <h6>مستشفى جامعة عين شمس التخصصي</h6>
+                    <p> الحي الثاني </p>
+                </div>
+                <button onclick="window.open('https://maps.app.goo.gl/8HwfKj8VdRugSCrPA')" class="btn-go">موقع</button>
             </div>
         </div>
 
-        <div id="page-contact" class="app-page text-center">
-            <h5 class="fw-bold mb-4">📩 تواصل معنا</h5>
-            <div class="card p-4 border-0 shadow-sm">
-                <a href="https://wa.me/201234567890" class="btn btn-success w-100 mb-3 py-3">💬 واتساب سريع</a>
-                <a href="#" class="btn btn-outline-danger w-100 py-3">📝 تقديم شكوى</a>
+
+        <div id="page-contact" class="app-page">
+            <h5 class="fw-bold mb-4 text-center">📩 تواصل معنا</h5>
+            <div class="card p-4 text-center border-0 shadow-sm">
+                <p class="mb-4">لتقديم الشكاوى أو الاستفسارات، تواصل معنا عبر:</p>
+                        <a href="https://forms.gle/yMPqKXeZvkLB2vUZ9" class="btn btn-outline-danger w-100 py-3" style="border-radius: 12px;">
+                    📝 نموذج الشكاوى الرسمي
+                </a>
             </div>
         </div>
     </div>
