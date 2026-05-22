@@ -6,199 +6,231 @@
     <title>صندوق تمويل المساكن</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         :root{
-            --primary:#1a3c5e;
-            --primary-2:#24527a;
-            --accent:#d4af37;
-            --bg:#eef3f7;
-            --card:#ffffff;
-            --muted:#6c757d;
+            --bg1:#f5f8fc;
+            --bg2:#edf3f8;
+            --primary:#163856;
+            --primary2:#24557d;
+            --accent:#d6b24c;
+            --text:#15202b;
+            --muted:#6b7280;
+            --card:rgba(255,255,255,.82);
+            --border:rgba(255,255,255,.55);
         }
 
         *{box-sizing:border-box}
         body{
             font-family:'Cairo',sans-serif;
-            background:
-                radial-gradient(circle at top right, rgba(26,60,94,.08), transparent 28%),
-                radial-gradient(circle at top left, rgba(212,175,55,.10), transparent 25%),
-                linear-gradient(180deg, #f8fbfd 0%, var(--bg) 100%);
             margin:0;
-            padding-bottom:92px;
-            color:#1f2937;
+            padding-bottom:94px;
+            color:var(--text);
+            background:
+                radial-gradient(circle at 15% 10%, rgba(214,178,76,.14), transparent 24%),
+                radial-gradient(circle at 85% 0%, rgba(35,90,130,.12), transparent 22%),
+                linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
         }
 
         #splash-screen{
             position:fixed;
             inset:0;
-            background:linear-gradient(180deg,#fff 0%,#f7fafc 100%);
+            background:linear-gradient(180deg,#fff 0%,#f7fbfe 100%);
             display:flex;
-            flex-direction:column;
-            justify-content:center;
             align-items:center;
+            justify-content:center;
+            flex-direction:column;
             z-index:9999;
-            transition:opacity .7s ease;
+            transition:opacity .6s ease;
         }
 
         .motion-logo{
-            width:138px;
-            filter: drop-shadow(0 10px 25px rgba(26,60,94,.18));
-            animation:pulse 2s ease-in-out infinite;
+            width:142px;
+            filter:drop-shadow(0 16px 26px rgba(22,56,86,.18));
+            animation:floaty 2.2s ease-in-out infinite;
         }
 
-        @keyframes pulse{
-            0%,100%{transform:scale(1)}
-            50%{transform:scale(1.08)}
+        @keyframes floaty{
+            0%,100%{transform:translateY(0) scale(1)}
+            50%{transform:translateY(-6px) scale(1.05)}
         }
 
         .app-page{
             display:none;
             padding:16px;
-            animation:fadeUp .35s ease-out;
+            animation:up .35s ease-out;
         }
 
         .app-page.active{display:block}
 
-        @keyframes fadeUp{
-            from{transform:translateY(16px);opacity:0}
+        @keyframes up{
+            from{transform:translateY(14px);opacity:0}
             to{transform:translateY(0);opacity:1}
         }
 
         .hero{
-            background:linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 55%, #16324b 100%);
-            color:#fff;
-            border-radius:28px;
-            padding:22px 18px;
-            box-shadow:0 18px 40px rgba(26,60,94,.16);
             position:relative;
             overflow:hidden;
+            border-radius:30px;
+            padding:22px 18px;
+            color:#fff;
+            background:linear-gradient(135deg,#173754 0%, #234d74 55%, #102739 100%);
+            box-shadow:0 18px 42px rgba(22,56,86,.16);
+        }
+
+        .hero::before{
+            content:"";
+            position:absolute;
+            top:-55px;
+            left:-35px;
+            width:150px;
+            height:150px;
+            background:rgba(214,178,76,.14);
+            border-radius:50%;
         }
 
         .hero::after{
             content:"";
             position:absolute;
-            inset:auto -50px -60px auto;
-            width:160px;
-            height:160px;
-            background:rgba(212,175,55,.16);
+            bottom:-60px;
+            right:-40px;
+            width:180px;
+            height:180px;
+            background:rgba(255,255,255,.08);
             border-radius:50%;
         }
 
-        .hero small{
+        .hero-title{
+            font-size:20px;
+            font-weight:900;
+            margin-bottom:4px;
+            position:relative;
+            z-index:1;
+        }
+
+        .hero-sub{
+            font-size:12px;
             color:rgba(255,255,255,.82);
+            position:relative;
+            z-index:1;
         }
 
         .glass-card{
-            background:rgba(255,255,255,.86);
-            backdrop-filter:blur(10px);
-            border:1px solid rgba(255,255,255,.55);
-            border-radius:22px;
-            box-shadow:0 10px 28px rgba(15,23,42,.07);
+            background:var(--card);
+            border:1px solid var(--border);
+            backdrop-filter:blur(14px);
+            border-radius:24px;
+            box-shadow:0 12px 30px rgba(15,23,42,.07);
         }
 
         .news-card,.service-card,.booking-card{
             background:var(--card);
-            border-radius:20px;
-            border:none;
+            border:1px solid rgba(255,255,255,.7);
+            backdrop-filter:blur(12px);
+            border-radius:22px;
             padding:16px;
             margin-bottom:14px;
-            box-shadow:0 6px 18px rgba(15,23,42,.06);
-            position:relative;
-            overflow:hidden;
+            box-shadow:0 10px 28px rgba(15,23,42,.06);
         }
 
         .news-card{
             border-right:6px solid var(--accent);
         }
 
-        .section-title{
-            font-size:15px;
-            font-weight:800;
-            margin:18px 4px 12px;
-            color:#243447;
-        }
-
         .news-title{
-            font-size:15px;
-            font-weight:800;
+            font-weight:900;
             color:var(--primary);
+            font-size:15px;
             margin-bottom:8px;
         }
 
         .news-text{
+            margin:0;
+            color:#5f6b7a;
             font-size:13px;
-            color:#556070;
             line-height:1.8;
-            margin-bottom:0;
+        }
+
+        .section-title{
+            font-size:15px;
+            font-weight:900;
+            color:#213142;
+            margin:18px 4px 12px;
         }
 
         .service-card{
             display:flex;
             align-items:center;
             gap:12px;
-            padding:14px;
         }
 
         .service-icon{
-            width:48px;
-            height:48px;
-            border-radius:16px;
-            background:linear-gradient(135deg,#edf4fb 0%, #f6f9fc 100%);
+            width:50px;
+            height:50px;
+            border-radius:18px;
             display:flex;
             align-items:center;
             justify-content:center;
             font-size:22px;
-            flex:0 0 48px;
-            box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+            background:linear-gradient(135deg,#eef5fb 0%, #f7fafc 100%);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+            flex:0 0 50px;
         }
 
-        .service-info{
-            flex:1;
-            min-width:0;
-        }
-
+        .service-info{flex:1; min-width:0;}
         .service-info h6{
             margin:0 0 4px;
             font-size:14px;
-            font-weight:800;
+            font-weight:900;
             color:#182433;
         }
-
         .service-info p{
             margin:0;
             font-size:12px;
-            color:#667085;
+            color:#687385;
             line-height:1.6;
         }
 
         .btn-go{
             margin-right:auto;
-            background:linear-gradient(135deg,var(--primary) 0%, var(--primary-2) 100%);
-            color:#fff;
             border:none;
             border-radius:12px;
             padding:9px 14px;
             font-size:12px;
-            font-weight:700;
-            box-shadow:0 8px 16px rgba(26,60,94,.15);
+            font-weight:800;
+            color:#fff;
+            background:linear-gradient(135deg,var(--primary) 0%, var(--primary2) 100%);
+            box-shadow:0 10px 18px rgba(22,56,86,.14);
         }
 
         .booking-hero{
-            background:linear-gradient(135deg, #183754 0%, #234d74 50%, #10293f 100%);
+            position:relative;
+            overflow:hidden;
+            border-radius:30px;
+            padding:24px 18px;
             color:#fff;
-            border-radius:26px;
-            padding:22px 18px;
-            box-shadow:0 18px 40px rgba(26,60,94,.16);
+            background:linear-gradient(135deg,#163856 0%, #2b5c84 52%, #10293f 100%);
+            box-shadow:0 18px 42px rgba(22,56,86,.16);
             margin-bottom:14px;
         }
 
-        .booking-hero p{
-            margin:0;
+        .booking-hero::after{
+            content:"";
+            position:absolute;
+            inset:auto -48px -52px auto;
+            width:170px;
+            height:170px;
+            background:rgba(214,178,76,.12);
+            border-radius:50%;
+        }
+
+        .booking-hero .sub{
             color:rgba(255,255,255,.86);
-            line-height:1.8;
             font-size:13px;
+            line-height:1.8;
+            position:relative;
+            z-index:1;
         }
 
         .booking-main-btn{
@@ -208,24 +240,26 @@
             gap:10px;
             width:100%;
             border:none;
-            border-radius:16px;
-            padding:15px 16px;
-            background:linear-gradient(135deg, var(--accent) 0%, #c79b22 100%);
+            border-radius:18px;
+            padding:16px 18px;
             color:#fff;
-            font-weight:800;
-            font-size:15px;
             text-decoration:none;
-            box-shadow:0 14px 28px rgba(212,175,55,.28);
+            font-weight:900;
+            font-size:15px;
+            background:linear-gradient(135deg,#e1bc52 0%, #c7951f 100%);
+            box-shadow:0 16px 28px rgba(214,178,76,.28);
         }
 
         .booking-main-btn:hover{color:#fff}
 
-        .helper-box{
-            border-radius:18px;
-            background:#f8fbff;
-            border:1px solid #e7eef6;
-            padding:14px;
-            color:#536071;
+        .mini-panel{
+            margin-top:14px;
+            border-radius:20px;
+            padding:14px 16px;
+            background:rgba(255,255,255,.74);
+            border:1px solid rgba(255,255,255,.7);
+            backdrop-filter:blur(12px);
+            color:#556070;
             font-size:13px;
             line-height:1.8;
         }
@@ -236,45 +270,33 @@
             width:100%;
             background:rgba(255,255,255,.96);
             backdrop-filter:blur(12px);
+            border-top:1px solid #edf1f5;
+            box-shadow:0 -2px 16px rgba(0,0,0,.08);
             display:flex;
             justify-content:space-around;
             padding:10px 0 8px;
-            box-shadow:0 -2px 16px rgba(0,0,0,.08);
             z-index:1000;
-            border-top:1px solid #edf1f5;
         }
 
         .nav-item{
+            flex:1;
             text-align:center;
+            cursor:pointer;
             color:#8a94a3;
             font-size:11px;
-            flex:1;
-            cursor:pointer;
             padding:4px 0;
-            transition:.2s;
             user-select:none;
         }
 
         .nav-item.active{
             color:var(--primary);
-            font-weight:800;
+            font-weight:900;
         }
 
         .nav-item span{
             display:block;
             font-size:20px;
             margin-bottom:3px;
-        }
-
-        .page-title{
-            font-size:18px;
-            font-weight:800;
-            margin-bottom:6px;
-        }
-
-        .page-subtitle{
-            font-size:12px;
-            opacity:.85;
         }
     </style>
 </head>
@@ -287,21 +309,21 @@
 
 <div id="page-news" class="app-page active">
     <div class="hero mb-3">
-        <div class="page-title">صندوق تمويل المساكن</div>
-        <div class="page-subtitle">منصة المعلومات والخدمات والحجز الإلكتروني</div>
+        <div class="hero-title">صندوق تمويل المساكن</div>
+        <div class="hero-sub">منصة الأخبار والخدمات والحجز الإلكتروني</div>
     </div>
 
     <div class="news-card">
         <div class="news-title">🔵 تابعونا على فيسبوك</div>
-        <p class="news-text">للحصول على التحديثات اليومية وآخر الأخبار والتنبيهات الخاصة بالمشروع.</p>
-        <a href="https://www.facebook.com/profile.php?id=61575993517643" target="_blank" class="btn btn-primary w-100 mt-3" style="border-radius:14px;font-weight:700;">فتح الصفحة الرسمية</a>
+        <p class="news-text">للحصول على التحديثات اليومية وآخر الأخبار والتنبيهات الرسمية الخاصة بالمشروع.</p>
+        <a href="https://www.facebook.com/profile.php?id=61575993517643" target="_blank" class="btn btn-primary w-100 mt-3" style="border-radius:14px;font-weight:800;">فتح الصفحة الرسمية</a>
     </div>
 </div>
 
 <div id="page-services" class="app-page">
     <div class="hero mb-3">
-        <div class="page-title">دليل مدينة العبور</div>
-        <div class="page-subtitle">أهم المواقع والخدمات المحيطة بالمشروع</div>
+        <div class="hero-title">دليل مدينة العبور</div>
+        <div class="hero-sub">أهم المواقع والخدمات المحيطة بالمشروع</div>
     </div>
 
     <div class="section-title">البنوك والتحصيل</div>
@@ -332,31 +354,20 @@
         </div>
         <button onclick="window.open('https://maps.app.goo.gl/NuJ3DMgeWc4KZHxEA','_blank')" class="btn-go">موقع</button>
     </div>
-
-    <div class="section-title">التسوق والترفيه</div>
-
-    <div class="service-card">
-        <div class="service-icon">🛍️</div>
-        <div class="service-info">
-            <h6>جولف سيتي مول</h6>
-            <p>مدخل المدينة - كارفور العبور</p>
-        </div>
-        <button onclick="window.open('https://maps.app.goo.gl/8D1vevR1cUGAgiqB9','_blank')" class="btn-go">موقع</button>
-    </div>
 </div>
 
 <div id="page-booking" class="app-page">
     <div class="booking-hero">
-        <div class="page-title">حجز دفع قسط</div>
-        <p>اضغط على الزر التالي لفتح صفحة الحجز المتفق عليها، وسيتم الاحتفاظ بنفس اسم اللوجو <b>logo.png</b> كما هو.</p>
+        <div class="hero-title">حجز دفع قسط</div>
+        <div class="sub">اختيار موعد الدفع أصبح أسرع وأوضح من أي وقت.</div>
     </div>
 
     <div class="booking-card">
-        <div class="service-card mb-3">
+        <div class="service-card" style="margin-bottom:14px;">
             <div class="service-icon">📅</div>
             <div class="service-info">
                 <h6>الحجز الإلكتروني</h6>
-                <p>اختيار موعد دفع القسط بسهولة من خلال الرابط الرسمي.</p>
+                <p>اضغط على الزر التالي لفتح صفحة الحجز الرسمية.</p>
             </div>
         </div>
 
@@ -364,21 +375,17 @@
             💳 حجز دفع قسط
         </a>
     </div>
-
-    <div class="helper-box">
-        هذه الصفحة مخصصة للحجز فقط، ويمكن لاحقًا إضافة تعليمات أو بيانات تواصل أو زر ثانٍ للاستعلام.
-    </div>
 </div>
 
 <div id="page-contact" class="app-page">
     <div class="hero mb-3">
-        <div class="page-title">تواصل معنا</div>
-        <div class="page-subtitle">للشكاوى والاستفسارات الرسمية</div>
+        <div class="hero-title">تواصل معنا</div>
+        <div class="hero-sub">للشكاوى والاستفسارات الرسمية</div>
     </div>
 
-    <div class="card p-4 text-center border-0 shadow-sm" style="border-radius:20px;">
-        <p class="mb-4">لتقديم الشكاوى أو الاستفسارات، تواصل معنا عبر النموذج الرسمي:</p>
-        <a href="https://forms.gle/yMPqKXeZvkLB2vUZ9" target="_blank" class="btn btn-outline-danger w-100 py-3" style="border-radius:14px;font-weight:700;">
+    <div class="glass-card p-4 text-center">
+        <p class="mb-4">لتقديم الشكاوى أو الاستفسارات، استخدم النموذج الرسمي التالي:</p>
+        <a href="https://forms.gle/yMPqKXeZvkLB2vUZ9" target="_blank" class="btn btn-outline-danger w-100 py-3" style="border-radius:14px;font-weight:800;">
             📝 نموذج الشكاوى الرسمي
         </a>
     </div>
@@ -408,5 +415,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
+
 </body>
 </html>
